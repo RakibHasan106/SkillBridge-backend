@@ -14,11 +14,11 @@ export const auth = betterAuth({
     trustedOrigins : [process.env.APP_URL!],
     user: {
       additionalFields: {
-        role: {
-          type: "string",
-          defaultValue: "USER",
-          required: false
-        },
+        // role: {
+        //   type: "string",
+        //   defaultValue: "STUDENT",
+        //   required: false
+        // },
         phone: {
           type: "string",
           required: false
