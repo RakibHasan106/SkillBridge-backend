@@ -12,14 +12,15 @@ export const auth = betterAuth({
     emailAndPassword: {
       enabled: true,
     },
+    baseURL: process.env.BACKEND_URL,
     trustedOrigins : [process.env.APP_URL!],
     user: {
       additionalFields: {
-        // role: {
-        //   type: "string",
-        //   defaultValue: "STUDENT",
-        //   required: false
-        // },
+        role: {
+          type: "string",
+          defaultValue: "STUDENT",
+          required: true
+        },
         phone: {
           type: "string",
           required: false
@@ -28,6 +29,18 @@ export const auth = betterAuth({
           type: "string",
           defaultValue: "ACTIVE",
           required: false
+        }
+      }
+    },
+    advanced: {
+      cookiePrefix: "better-auth",
+      cookies: {
+        session_token: {
+          attributes: {
+            secure: true,
+            sameSite: "none",
+            httpOnly: true,
+          }
         }
       }
     }
