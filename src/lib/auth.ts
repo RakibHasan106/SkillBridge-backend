@@ -32,16 +32,16 @@ export const auth = betterAuth({
         }
       }
     },
-    advanced: {
-      cookiePrefix: "better-auth",
-      cookies: {
-        session_token: {
-          attributes: {
-            secure: true,
-            sameSite: "none",
-            httpOnly: true,
-          }
-        }
-      }
-    }
+    // advanced: {
+    //   cookiePrefix: "better-auth",
+    //   cookies: {
+    //     session_token: {
+    //       attributes: {
+    //         secure: true,
+    //         sameSite: "none",
+    //         httpOnly: true,
+    //       }
+    //     }
+    //   }
+    // }
 });

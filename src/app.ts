@@ -5,6 +5,8 @@ import { toNodeHandler } from "better-auth/node";
 import { auth } from "./lib/auth";
 
 import tutorRoutes from "./modules/tutor/tutor.routes";
+import bookingRoutes from "./modules/booking/booking.routes";
+import reviewRoutes from "./modules/review/review.routes";
 
 const app = express();
 
@@ -17,6 +19,8 @@ app.use(express.json());
 
 app.all("/api/auth/*splat",toNodeHandler(auth));
 app.use("/tutors",tutorRoutes);
+app.use("/booking",bookingRoutes);
+app.use("/review",reviewRoutes);
 
 app.use("/",(req:Request,res:Response)=>{
     res.status(200).json({

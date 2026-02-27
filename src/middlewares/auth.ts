@@ -26,22 +26,26 @@ const auth = (...roles: UserRole[]) => {
         try {
             // get user session
             const session = await betterAuth.api.getSession({
-                headers: req.headers as any
+                headers: {
+                    ...req.headers,
+                    cookie: req.headers.cookie || ""
+                } as any
             })
 
             if (!session) {
+                console.log(session);
                 return res.status(401).json({
                     success: false,
                     message: "You are not authorized!"
                 })
             }
 
-            if (!session.user.emailVerified) {
-                return res.status(403).json({
-                    success: false,
-                    message: "Email verification required. Please verfiy your email!"
-                })
-            }
+            // if (!session.user.emailVerified) {
+            //     return res.status(403).json({
+            //         success: false,
+            //         message: "Email verification required. Please verfiy your email!"
+            //     })
+            // }
 
             req.user = {
                 id: session.user.id,
